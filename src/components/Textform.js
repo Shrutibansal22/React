@@ -19,13 +19,29 @@ export default function Textform(props) {
     console.log("text changed");
     setText(event.target.value);
   }
+
+  const handleLowercaseClick=()=>{
+    let navaaa=kuchbhi.toLowerCase();
+    setText(navaaa);
+  }
   return ( 
-    <div>
+    <>
+    <div className="container">
         <h1>{props.heading}</h1>
         <div className="mb-3">
         <textarea className="form-control" onChange={onchange} value={kuchbhi} id="myBox" rows="8"></textarea>
         </div> 
-        <button className="btn btn-primary" onClick={handleUppercaseClick}>Convert to uppercase</button> 
+        <button className="btn btn-primary mx-2" onClick={handleUppercaseClick}>Convert to uppercase</button> 
+        <button className="btn btn-primary mx-2" onClick={handleLowercaseClick}>Convert to Lowercase</button> 
     </div>
+
+    <div className="container my-3">
+        <h2>Ur text summary</h2>
+        <p>{kuchbhi.split(" ").length} words,{kuchbhi.length} characters</p>
+        <p>Took {(kuchbhi.split(" ").length)*0.008} Minutes to Read</p>
+        <h3>Preview</h3>
+        <p>{kuchbhi}</p>
+    </div>
+    </>
   )
 }
