@@ -6,12 +6,6 @@ export default function Textform(props) {
   // text="dgfhf";  //gives error
   const handleUppercaseClick=()=>{
     console.log("Uppercase was clicked "+ kuchbhi);
-    // const words = kuchbhi.split(' '); // Split the string into an array of words
-    // const capitalizedWords = words.map((word) => {
-    //   // Capitalize the first letter of each word, and keep the rest of the word as is
-    //   return word.charAt(0).toUpperCase() + word.slice(1);
-    // });
-    // const newText = capitalizedWords.join(' '); // Join the words back into a string
     let newText=kuchbhi.toUpperCase();
     setText(newText); 
   }
@@ -21,8 +15,30 @@ export default function Textform(props) {
   }
 
   const handleLowercaseClick=()=>{
-    let navaaa=kuchbhi.toLowerCase();
-    setText(navaaa);
+    let newText=kuchbhi.toLowerCase();
+    setText(newText);
+  }
+  const handleClearText=()=>{
+    let newText=" ";
+    setText(newText);
+  }
+  const handleCopyText=()=>{
+    var text=document.getElementById("myBox");
+    text.select();
+    navigator.clipboard.writeText(text.value);
+  }
+  const handleExtraSpaces=()=>{
+    let newText=kuchbhi.split(/[ ]+/);
+    setText(newText.join(" "));
+  }
+  const handleCamelCase=()=>{
+    const words = kuchbhi.split(' ');
+    const capitalizedWords = words.map((word) => {
+      // Capitalize the first letter of each word, and keep the rest of the word as is
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    });
+    const newText = capitalizedWords.join(' '); // Join the words back into a string
+    setText(newText);
   }
   return ( 
     <>
@@ -32,7 +48,11 @@ export default function Textform(props) {
         <textarea className="form-control" onChange={onchange} value={kuchbhi} id="myBox" rows="8"></textarea>
         </div> 
         <button className="btn btn-primary mx-2" onClick={handleUppercaseClick}>Convert to uppercase</button> 
-        <button className="btn btn-primary mx-2" onClick={handleLowercaseClick}>Convert to Lowercase</button> 
+        <button className="btn btn-primary mx-2" onClick={handleLowercaseClick}>Convert to Lowercase</button>
+        <button className="btn btn-primary mx-2 my-2" onClick={handleClearText}>Clear text</button>  
+        <button className="btn btn-primary mx-2 my-2" onClick={handleCopyText}>Copy text</button>  
+        <button className="btn btn-primary mx-2 my-2" onClick={handleExtraSpaces}>Remove extra Spaces</button>  
+        <button className="btn btn-primary mx-2 my-2" onClick={handleCamelCase}>Convert to camel case</button>  
     </div>
 
     <div className="container my-3">
