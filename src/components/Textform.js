@@ -8,6 +8,7 @@ export default function Textform(props) {
     console.log("Uppercase was clicked "+ kuchbhi);
     let newText=kuchbhi.toUpperCase();
     setText(newText); 
+    props.showAlert("converted to uppercase","danger");
   }
   const onchange=(event)=>{
     console.log("text changed");
