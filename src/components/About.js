@@ -27,13 +27,12 @@ export default function About(props) {
 
 let myStyle={
   color : props.mode==='dark'?'white':'#042743',
-  backgroundColor:props.mode==='dark'?'#042743':'white',
-
+  backgroundColor:props.mode==='dark'?'rgb(36 74 104)':'white',
 }
 // to style in inspect of google -- $0.style.border="7px solid red"
   return (
-    <div className="container" style={myStyle}>
-    <h1>About Us</h1>
+    <div className="container" >
+    <h1 style={{color : props.mode==='dark'?'white':'#042743'}}>About Us</h1>
       <div className="accordion" id="accordionExample" style={myStyle}>
   <div className="accordion-item" style={myStyle}>
     <h2 className="accordion-header" style={myStyle}>
